@@ -1,4 +1,4 @@
-export default function SearchBar(props) {
+const SearchBar = (props) => {
    return (
       <div>
          <input type='search' />
@@ -6,3 +6,5 @@ export default function SearchBar(props) {
       </div>
    );
 }
+
+export default SearchBar;

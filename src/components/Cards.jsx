@@ -9,8 +9,7 @@ const ContainerMainCards = styled.div`
 
 
 
-
-export default function Cards(props) {
+const Cards = (props) => {
    
    const { characters } = props;
 
@@ -25,7 +24,7 @@ export default function Cards(props) {
                   species = {pj.species}
                   gender = {pj.gender}
                   image = {pj.image}
-                  onClose = {pj.onClose}
+                  onClose={() => window.alert('Emulamos que se cierra la card')}
                   /> 
          )
       })}
@@ -35,3 +34,6 @@ export default function Cards(props) {
    
       );
 }
+
+
+export default Cards;

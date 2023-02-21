@@ -44,7 +44,7 @@ const DivSpeciasGender = styled.div`
 `;
 
 
-export default function Card(props) {
+const Card = (props) =>  {
 
    //propiedad dinámica de un objeto
    const characters = {
@@ -87,4 +87,4 @@ export default function Card(props) {
 }
 
 
-
+export default Card;
