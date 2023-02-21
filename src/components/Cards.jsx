@@ -1,4 +1,14 @@
 import Card from './Card';
+import styled from 'styled-components';
+
+const ContainerMainCards = styled.div`
+   display: flex;
+   align-items: center;
+   justify-content: center;
+`;
+
+
+
 
 export default function Cards(props) {
    
@@ -6,7 +16,8 @@ export default function Cards(props) {
 
    return (
    
-      <div className='container-main-cards'>
+      <ContainerMainCards>
+      
          {characters.map(pj => {
             return (
                   <Card 
@@ -19,7 +30,7 @@ export default function Cards(props) {
          )
       })}
          
-      </div>
+      </ContainerMainCards>
       
    
       );

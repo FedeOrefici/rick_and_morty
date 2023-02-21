@@ -3,20 +3,44 @@ import styled from "styled-components";
 
 
 const ContainerCard = styled.div`
-   background-color: rgb(73, 80, 91);
-   width: 400px;
-   height: 500px;
-   border-radius: 10px;
+   background: linear-gradient(to bottom, #61c7ef 0%, #4833fb 50%, #383838 50%, #383838 100%);
+   width: 300px;
+   height: 450px;
+   border-radius: 5%;
    display: flex;
    align-items: center;
    justify-content: center;
    flex-direction: column;
+   margin: 20px;
+   color: white;
+   padding: 20px;
+   box-shadow: 1px 1px 10px 1px #212124;
 `;
 
 const Button = styled.button`
-   border: 1px solid black;
-   width: 50px;
-   height: 100px;
+   width: 150px;
+   height: 35px;
+   border-radius: 6px;
+   background-color: #383838;
+   color: white;
+   border: none;
+   background-image: linear-gradient(85deg, #61c7ef, #4833fb);
+   margin-bottom: 5px;
+   
+   cursor: pointer;
+   :hover {
+      transform: scale(1.1);
+      transition: .2s;
+   }
+`;
+
+const DivSpeciasGender = styled.div`
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   border-bottom: .5px solid gray;
+   width: 100%;
+   margin-bottom: 20px;
 `;
 
 
@@ -25,10 +49,19 @@ export default function Card(props) {
       
          <ContainerCard>
             <img className="img" src={props.image} alt="img" />
-            <p className="species">{props.species}</p>
             <h1 className="name">{props.name}</h1>
-            <p className="gender">{props.gender}</p>
-            <Button className="btn" onClick={props.onClose}>x</Button>
+               <DivSpeciasGender>
+                  <p className="species">{props.species}</p>
+                  <span className="material-symbols-outlined">account_circle</span>
+                  <p className="gender">{props.gender}</p>
+
+                  {(props.gender === 'Female')
+                  ? <span className="material-symbols-outlined" style={{color: 'pink'}}>female</span>
+                  : <span class="material-symbols-outlined" style={{color: "skyblue"}}>male</span>
+                  }
+
+               </DivSpeciasGender>
+                  <Button className="btn" onClick={props.onClose}>Cerrar</Button>
          </ContainerCard>
       
    );

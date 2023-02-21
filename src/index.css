@@ -4,9 +4,20 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
+  background-color: linear-gradient(120deg,  #343A4F, #0F1620);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
+}
+
+.img {
+   width: 50%;
+   border-radius: 50%;
+   border: 1px solid rgb(78, 78, 78);
+}
+
+.name {
+  margin-top: 70px;
 }
