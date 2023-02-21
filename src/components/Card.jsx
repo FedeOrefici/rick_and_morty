@@ -45,6 +45,21 @@ const DivSpeciasGender = styled.div`
 
 
 export default function Card(props) {
+
+   //propiedad dinámica de un objeto
+   const characters = {
+      Female: {
+         label: 'female',
+         color: 'pink'
+      },
+
+      Male: {
+         label: 'male',
+         color: 'skyblue'
+      }
+   };
+
+
    return (
       
          <ContainerCard>
@@ -55,10 +70,14 @@ export default function Card(props) {
                   <span className="material-symbols-outlined">account_circle</span>
                   <p className="gender">{props.gender}</p>
 
-                  {(props.gender === 'Female')
-                  ? <span className="material-symbols-outlined" style={{color: 'pink'}}>female</span>
-                  : <span class="material-symbols-outlined" style={{color: "skyblue"}}>male</span>
-                  }
+                  
+                  <span 
+                  className="material-symbols-outlined" 
+                  style={{color: characters[props.gender].color}}>
+                  {characters[props.gender].label}
+                  </span>
+                  
+                  
 
                </DivSpeciasGender>
                   <Button className="btn" onClick={props.onClose}>Cerrar</Button>
