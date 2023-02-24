@@ -5,33 +5,34 @@ const ContainerMainCards = styled.div`
    display: flex;
    align-items: center;
    justify-content: center;
+   width: 100%;
+   flex-wrap: wrap;
+   
 `;
-
 
 
 const Cards = (props) => {
    
-   const { characters } = props;
+   const { characters, onClose } = props;
+   
 
+
+   
    return (
-   
       <ContainerMainCards>
-      
-         {characters.map(pj => {
+         {characters.map((character) => {
             return (
-                  <Card 
-                  name = {pj.name}
-                  species = {pj.species}
-                  gender = {pj.gender}
-                  image = {pj.image}
-                  onClose={() => window.alert('Emulamos que se cierra la card')}
+                  <Card
+                  key={character.id}
+                  name = {character.name}
+                  species = {character.species}
+                  gender = {character.gender}
+                  image = {character.image}
+                  onClose={() => onClose(character.id)}
                   /> 
-         )
-      })}
-         
+            )
+         })}
       </ContainerMainCards>
-      
-   
       );
 }
 

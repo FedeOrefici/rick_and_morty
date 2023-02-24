@@ -4,7 +4,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
-  background-color: linear-gradient(120deg,  #343A4F, #0F1620);
+  background-color: #d5d6d6;
 }
 
 code {
@@ -13,11 +13,27 @@ code {
 }
 
 .img {
-   width: 50%;
-   border-radius: 50%;
+   width: 40%;
+   border-radius: 5%;
    border: 1px solid rgb(78, 78, 78);
+   margin-top: 10px;
 }
 
 .name {
-  margin-top: 70px;
+  margin-top: 20%;
+  font-size: 20px;
+}
+
+.logo {
+  width: 250px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.hero {
+  width: 50%;
+}
+
+.species, .gender {
+  font-size: 12px;
 }

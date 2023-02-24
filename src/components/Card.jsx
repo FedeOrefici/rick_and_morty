@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 
 const ContainerCard = styled.div`
-   background: linear-gradient(to bottom, #61c7ef 0%, #4833fb 50%, #383838 50%, #383838 100%);
-   width: 300px;
-   height: 450px;
+   background: linear-gradient(to bottom, #32CD32 0%, #7CFC00 50%, #383838 50%, #383838 100%);
+   width: 250px;
+   height: 350px;
    border-radius: 5%;
    display: flex;
    align-items: center;
@@ -18,13 +18,13 @@ const ContainerCard = styled.div`
 `;
 
 const Button = styled.button`
-   width: 150px;
-   height: 35px;
+   width: 120px;
+   height: 30px;
    border-radius: 6px;
    background-color: #383838;
-   color: white;
+   color: black;
    border: none;
-   background-image: linear-gradient(85deg, #61c7ef, #4833fb);
+   background-image: linear-gradient(45deg, #32CD32, #7CFC00);
    margin-bottom: 5px;
    
    cursor: pointer;
@@ -45,7 +45,8 @@ const DivSpeciasGender = styled.div`
 
 
 const Card = (props) =>  {
-
+   
+   
    //propiedad dinámica de un objeto
    const characters = {
       Female: {
@@ -58,30 +59,25 @@ const Card = (props) =>  {
          color: 'skyblue'
       }
    };
-
-
+ 
    return (
-      
+      //<div>
          <ContainerCard>
             <img className="img" src={props.image} alt="img" />
             <h1 className="name">{props.name}</h1>
                <DivSpeciasGender>
                   <p className="species">{props.species}</p>
                   <span className="material-symbols-outlined">account_circle</span>
-                  <p className="gender">{props.gender}</p>
-
-                  
+                  <p className="gender">{props.gender}</p> 
                   <span 
                   className="material-symbols-outlined" 
                   style={{color: characters[props.gender].color}}>
-                  {characters[props.gender].label}
+                        {characters[props.gender].label}
                   </span>
-                  
-                  
-
                </DivSpeciasGender>
                   <Button className="btn" onClick={props.onClose}>Cerrar</Button>
          </ContainerCard>
+         //<div>
       
    );
 }

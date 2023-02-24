@@ -1,50 +1,53 @@
 import styled from 'styled-components'
 import './App.css'
-import Card from './components/Card.jsx'
 import Cards from './components/Cards.jsx'
-import SearchBar from './components/SearchBar.jsx'
-import characters, { Rick } from './data.js'
+import Nav from './components/Nav'
+import { useState } from 'react'
+
 
 
 const MainDivApp = styled.div`
-  background-color: #343A4F;
+  background-color: #CAD6E0;
 `;
 
-const ContainerFirst = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+
 
 function App () {
+
+  const [characters, setCharacters] = useState([]);
   
+
+  const onSearch = (character) => {
+    
+    fetch(`https://rickandmortyapi.com/api/character/${character}`)
+      .then((response) => response.json())
+      .then((data) => {
+         if (data.name) {
+            setCharacters((oldChars) => [...oldChars, data]);
+         } else {
+            window.alert('No hay personajes con ese ID');
+         }
+      });
+ }
+
+ const onClose = (id) => {
+  setCharacters(characters.filter((char) => char.id !== id));
+ }
+
+
   return (
+
+    
     <MainDivApp>
-      <ContainerFirst>
-        <Card
-          name={Rick.name}
-          species={Rick.species}
-          gender={Rick.gender}
-          image={Rick.image}
-          onClose={() => window.alert('Emulamos que se cierra la card')}
-        />
-      </ContainerFirst>
+      <Nav
+      onSearch={onSearch} />
 
-      <hr />
+      <Cards 
+      onClose={onClose}
+      characters={characters} />
 
-
-        <Cards
-          characters={characters}
-        />
-
-
-      <hr />
-
-        <SearchBar
-          onSearch={(characterID) => window.alert(characterID)}
-        />
- 
     </MainDivApp>
+    
   )
 }
 
