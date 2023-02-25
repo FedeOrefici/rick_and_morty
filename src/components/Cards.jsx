@@ -7,27 +7,24 @@ const ContainerMainCards = styled.div`
    justify-content: center;
    width: 100%;
    flex-wrap: wrap;
-   
+   background-image: linear-gradient(45deg, #32CD32, #7CFC00);
+   margin: auto;
 `;
 
 
-const Cards = (props) => {
-   
-   const { characters, onClose } = props;
-   
+const Cards = ({characters, onClose}) => {
 
-
-   
    return (
       <ContainerMainCards>
          {characters.map((character) => {
             return (
                   <Card
                   key={character.id}
-                  name = {character.name}
-                  species = {character.species}
-                  gender = {character.gender}
-                  image = {character.image}
+                  name={character.name}
+                  species={character.species}
+                  gender={character.gender}
+                  image={character.image}
+                  id={character.id}
                   onClose={() => onClose(character.id)}
                   /> 
             )

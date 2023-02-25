@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 
 const ContainerCard = styled.div`
@@ -34,7 +35,7 @@ const Button = styled.button`
    }
 `;
 
-const DivSpeciasGender = styled.div`
+const DivSpeciesGender = styled.div`
    display: flex;
    align-items: center;
    justify-content: space-around;
@@ -42,11 +43,7 @@ const DivSpeciasGender = styled.div`
    width: 100%;
    margin-bottom: 20px;
 `;
-
-
-const Card = (props) =>  {
-   
-   
+const Card = ({name, image, species, gender, id, onClose}) =>  {
    //propiedad dinámica de un objeto
    const characters = {
       Female: {
@@ -61,24 +58,23 @@ const Card = (props) =>  {
    };
  
    return (
-      //<div>
          <ContainerCard>
-            <img className="img" src={props.image} alt="img" />
-            <h1 className="name">{props.name}</h1>
-               <DivSpeciasGender>
-                  <p className="species">{props.species}</p>
-                  <span className="material-symbols-outlined">account_circle</span>
-                  <p className="gender">{props.gender}</p> 
-                  <span 
-                  className="material-symbols-outlined" 
-                  style={{color: characters[props.gender].color}}>
-                        {characters[props.gender].label}
-                  </span>
-               </DivSpeciasGender>
-                  <Button className="btn" onClick={props.onClose}>Cerrar</Button>
+               <Link to={`/detail/${id}`} >
+                  <img className="img" src={image} alt="img" />
+               </Link>
+                  <h1 className="name">{name}</h1>  
+                  <DivSpeciesGender>
+                     <p className="species">{species}</p>
+                     <span className="material-symbols-outlined">account_circle</span>
+                     <p className="gender">{gender}</p> 
+                     <span className="material-symbols-outlined" 
+                           style={{color: characters[gender].color}}>
+                           {characters[gender].label}
+                     </span>
+                  </DivSpeciesGender>
+                     <Button className="btn" onClick={onClose}>Close</Button>
          </ContainerCard>
-         //<div>
-      
+ 
    );
 }
 

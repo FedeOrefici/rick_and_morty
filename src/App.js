@@ -1,24 +1,15 @@
-import styled from 'styled-components'
+import { Fragment, useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import Cards from './components/Cards.jsx'
+import Home from './components/Home'
 import Nav from './components/Nav'
-import { useState } from 'react'
-
-
-
-const MainDivApp = styled.div`
-  background-color: #CAD6E0;
-`;
-
-
+import Cards from './components/Cards'
+import Detail from './components/Detail'
+import About from './components/About'
 
 function App () {
-
   const [characters, setCharacters] = useState([]);
-  
-
   const onSearch = (character) => {
-    
     fetch(`https://rickandmortyapi.com/api/character/${character}`)
       .then((response) => response.json())
       .then((data) => {
@@ -28,27 +19,25 @@ function App () {
             window.alert('No hay personajes con ese ID');
          }
       });
- }
-
+ };
  const onClose = (id) => {
   setCharacters(characters.filter((char) => char.id !== id));
- }
-
-
+ }; 
+ 
   return (
+    <Fragment>
+      <Nav onSearch={onSearch} />
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/cards' element={<Cards onClose={onClose} characters={characters}/>} />
+                <Route path='/detail/:detailId' element={<Detail />} /> 
+                <Route path='/about' element={<About />} />
+              </Routes>
+    </Fragment>
 
-    
-    <MainDivApp>
-      <Nav
-      onSearch={onSearch} />
+        
 
-      <Cards 
-      onClose={onClose}
-      characters={characters} />
-
-    </MainDivApp>
-    
-  )
-}
+  );
+};
 
 export default App
