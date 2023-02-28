@@ -43,7 +43,15 @@ const DivSpeciesGender = styled.div`
    width: 100%;
    margin-bottom: 20px;
 `;
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+`;
+
+
+
 const Card = ({name, image, species, gender, id, onClose}) =>  {
+
    //propiedad dinámica de un objeto
    const characters = {
       Female: {
@@ -59,10 +67,10 @@ const Card = ({name, image, species, gender, id, onClose}) =>  {
  
    return (
          <ContainerCard>
-               <Link to={`/detail/${id}`} >
                   <img className="img" src={image} alt="img" />
-               </Link>
-                  <h1 className="name">{name}</h1>  
+               <StyledLink to={`/detail/${id}`} >
+                  <h1 className="name" style={{textDecoration: 'none'}}>{name}</h1>  
+               </StyledLink>
                   <DivSpeciesGender>
                      <p className="species">{species}</p>
                      <span className="material-symbols-outlined">account_circle</span>
@@ -72,7 +80,7 @@ const Card = ({name, image, species, gender, id, onClose}) =>  {
                            {characters[gender].label}
                      </span>
                   </DivSpeciesGender>
-                     <Button className="btn" onClick={onClose}>Close</Button>
+                     <Button onClick={onClose}>Close</Button>
          </ContainerCard>
  
    );

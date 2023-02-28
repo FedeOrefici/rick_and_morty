@@ -2,7 +2,7 @@ import React  from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
-
+import navLogo from '../images/rick-and-morty-logo.png'
 
 const BarNav = styled.div`
    width: 90%;
@@ -11,17 +11,17 @@ const BarNav = styled.div`
    align-items: center;
    justify-content: space-around;
    margin: auto;
+   margin-top: 20px;
 `;
-
 
 const Nav = ({ onSearch }) => {
 
-
   return (
     <BarNav>
-      <Link className='links' to='/' style={{textDecoration: 'none', color: 'white'}}>Home</Link>
-      <Link className='links' to='/cards' style={{textDecoration: 'none', color: 'white'}}>Cards</Link>
-      <Link className='links' to='/about' style={{textDecoration: 'none', color: 'white'}}>About</Link>          
+      <img src={navLogo} className='nav-logo' alt='nav-logo'/>
+        <Link to='/' style={{textDecoration: 'none', color: '#383838'}} className='effect' >Home</Link>
+        <Link to='/home' style={{textDecoration: 'none', color: '#383838'}} className='effect'>Cards</Link>
+        <Link to='/about' style={{textDecoration: 'none', color: '#383838'}} className='effect'>About</Link>          
       <SearchBar onSearch={onSearch}/>
     </BarNav>
   )

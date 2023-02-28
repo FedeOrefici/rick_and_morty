@@ -16,21 +16,78 @@ code {
    width: 40%;
    border-radius: 5%;
    border: 1px solid rgb(78, 78, 78);
-   margin-left: 30%;
+   margin: auto;
 }
 
 .name {
-  margin-top: 20%;
-  font-size: 20px;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
 }
 
 .species, .gender {
   font-size: 12px;
+  margin-bottom: 20px;
 }
 
 .photo {
   width: 20%;
-  overflow: hidden;
-  border-radius: 50%;
+  border-radius: 5%;
   border: solid 1px black;
+  margin-bottom: 10px;
 }
+
+.img-data {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 5%;
+  margin: auto;
+}
+
+.effect {
+  position: relative;
+  letter-spacing: 1px;
+  padding: 0 10px;
+}
+
+.effect:after {
+  content: '';
+  position: absolute;
+  background-color: #383838;
+  width: 0%;
+  height: 1px;
+  left: 0px;
+  bottom: -5px;
+  transition: .3s;
+}
+
+.effect:hover:after{
+  width: 100%;
+}
+
+a {
+  color: grey;
+}
+
+label {
+  width: 300px;
+}
+
+.imgLogin {
+  width: 40%;
+}
+
+.nav-logo {
+  width: 20%;
+}
+
+.error {
+  color: #7CFC00;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 10px;
+}
+

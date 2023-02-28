@@ -5,21 +5,24 @@ const ContainerMainCards = styled.div`
    display: flex;
    align-items: center;
    justify-content: center;
-   width: 100%;
+   width: 90%;
    flex-wrap: wrap;
-   background-image: linear-gradient(45deg, #32CD32, #7CFC00);
    margin: auto;
+   margin-top: 80px;
+   margin-bottom: 80px;
+   background-color: #383838;
+   border-radius: 6px;
+   height: auto;
 `;
-
 
 const Cards = ({characters, onClose}) => {
 
    return (
       <ContainerMainCards>
-         {characters.map((character) => {
+         {characters.map((character, idx) => {
             return (
                   <Card
-                  key={character.id}
+                  key={idx}
                   name={character.name}
                   species={character.species}
                   gender={character.gender}

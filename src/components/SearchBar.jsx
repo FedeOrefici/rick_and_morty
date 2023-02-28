@@ -34,7 +34,7 @@ const SearchBar = ({onSearch}) => {
                <div onClick={() =>onSearch(character)}>
                   <span 
                   className="material-symbols-outlined" 
-                  style={{color: 'white', marginTop: '5px', cursor: 'pointer'}}
+                  style={{color: '#383838', marginTop: '5px', cursor: 'pointer'}}
                   >search</span>
                </div>
          </DivInputButton>
