@@ -91,3 +91,12 @@ label {
   font-size: 10px;
 }
 
+.heartIcon {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

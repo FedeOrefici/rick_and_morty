@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { addCard, deleteCard } from "../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+
 
 
 const ContainerCard = styled.div`
@@ -48,11 +51,15 @@ const StyledLink = styled(Link)`
     text-decoration: none;
 `;
 
-
-
 const Card = ({name, image, species, gender, id, onClose}) =>  {
 
-   //propiedad dinámica de un objeto
+   const dispatch = useDispatch();
+   const myfavorites = useSelector(state => state.myFavorites);
+   const [isFav, setIsFav] = useState(false);
+
+   //aplico propiedad dinámica de un objeto para que los iconos y color cambien
+   //en base a si el personaje es masculino o femenino.
+
    const characters = {
       Female: {
          label: 'female',
@@ -64,10 +71,42 @@ const Card = ({name, image, species, gender, id, onClose}) =>  {
          color: 'skyblue'
       }
    };
- 
+
+   const handleFavorite = () => {
+      if (isFav){
+         setIsFav(false)
+         dispatch(deleteCard(id))
+      } else {
+         setIsFav(true)
+         dispatch(addCard({name, image, species, gender, id}))
+      }
+   }
+   
+   useEffect(() => {
+      myfavorites.forEach((fav) => {
+         if (fav.id === id) {
+         setIsFav(true);
+         }
+      });
+   }, [myfavorites]);
+
+   
+
    return (
+      
          <ContainerCard>
+         
+               { (isFav) 
+               ? <button onClick={handleFavorite} className='heartIcon'>
+                  ❤️
+                  </button>
+               : <button onClick={handleFavorite} className='heartIcon'>
+                  🤍
+                  </button>
+               }
+
                   <img className="img" src={image} alt="img" />
+  
                <StyledLink to={`/detail/${id}`} >
                   <h1 className="name" style={{textDecoration: 'none'}}>{name}</h1>  
                </StyledLink>
@@ -83,8 +122,12 @@ const Card = ({name, image, species, gender, id, onClose}) =>  {
                      <Button onClick={onClose}>Close</Button>
          </ContainerCard>
  
-   );
-}
+   )};
+
+
+
+
 
 
 export default Card;
+ 

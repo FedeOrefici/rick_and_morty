@@ -14,15 +14,17 @@ const BarNav = styled.div`
    margin-top: 20px;
 `;
 
+
 const Nav = ({ onSearch }) => {
 
   return (
     <BarNav>
-      <img src={navLogo} className='nav-logo' alt='nav-logo'/>
-        <Link to='/' style={{textDecoration: 'none', color: '#383838'}} className='effect' >Home</Link>
+        <img src={navLogo} className='nav-logo' alt='nav-logo'/>
         <Link to='/home' style={{textDecoration: 'none', color: '#383838'}} className='effect'>Cards</Link>
-        <Link to='/about' style={{textDecoration: 'none', color: '#383838'}} className='effect'>About</Link>          
-      <SearchBar onSearch={onSearch}/>
+        <Link to='/favorites' style={{textDecoration: 'none', color: '#383838'}} className='effect'>Favorites</Link>  
+        <Link to='/about' style={{textDecoration: 'none', color: '#383838'}} className='effect'>About</Link> 
+        <SearchBar onSearch={onSearch}/>
+        <Link to='/'><span className="material-symbols-outlined" style={{textDecoration: 'none', color: '#383838'}}>logout</span></Link>
     </BarNav>
   )
 }

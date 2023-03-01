@@ -41,8 +41,8 @@ const ContainerDos = styled.div`
 `;
 
 const Button = styled.button`
-margin-top: 10px;
-   width: 150px;
+   margin-top: 10px;
+   width: 150px;  
    height: 30px;
    background-color: #383838;
    color: black;
@@ -59,15 +59,15 @@ margin-top: 10px;
 `;
 
 const Input = styled.input`
-    border: none !important;
     width: 300px;
     height: 30px;
-    border-radius: 6px;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: transparent;
-    border-bottom: 1px solid gray;
     color: white;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    border-bottom: 1px solid gray;
 `;
 
 
@@ -102,8 +102,7 @@ const Form = ({login}) => {
     login(userData);
   }
 
-
-
+  
   return (
     <DivContainerMain>
 
@@ -115,8 +114,9 @@ const Form = ({login}) => {
 
           <label>Username</label>
           <Input 
+          autoFocus
           type='email' 
-          placeholder='Insert your username...' 
+          placeholder='example@mail.com' 
           name='username' 
           value={userData.username}
           onChange={handleInputChange}
@@ -126,7 +126,7 @@ const Form = ({login}) => {
           <label className='label'>Password</label>
           <Input
           type='password'
-          placeholder='Insert your password...'
+          placeholder='Password...'
           name='password'
           value={userData.password}
           onChange={handleInputChange}

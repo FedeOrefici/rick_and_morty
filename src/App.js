@@ -6,6 +6,7 @@ import Cards from './components/Cards';
 import Detail from './components/Detail';
 import About from './components/About';
 import Form from './components/Form';
+import Favorites from './components/Favorites';
 
 function App () {
 
@@ -49,13 +50,16 @@ function App () {
       setCharacters(characters.filter((char) => char.id !== id));
   };
 
+  
+
   return (
     <Fragment>
               {(location.pathname === '/') ? <Form login={login} /> : <Nav onSearch={onSearch} />}           
               <Routes>
-                <Route path='/home' element={<Cards onClose={onClose} characters={characters}/>} />
+                <Route path='/home' element={<Cards onClose={onClose}  characters={characters}/>} />
                 <Route path='/detail/:detailId' element={<Detail />} /> 
                 <Route path='/about' element={<About />} />
+                <Route path='/favorites' element={<Favorites />} />
               </Routes>
     </Fragment>
 
