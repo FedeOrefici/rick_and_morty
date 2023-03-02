@@ -24,9 +24,15 @@ const InputSearch = styled.input`
 
 const SearchBar = ({onSearch}) => {
    const [character, setCharacter] = useState('');
+
+  
+
    const handleChange = (event) => {
-      setCharacter(event.target.value)
+      setCharacter(event.target.value);
    }
+
+   
+
    return (
       <div>
          <DivInputButton>

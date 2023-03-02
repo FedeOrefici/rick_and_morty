@@ -4,13 +4,13 @@ import aboutPicture from '../images/aboutPicture.jpg'
 
 
 const Container = styled.div`
-  background: linear-gradient(45deg, #383838 0%, #383838 50%, #32CD32 50%, #7CFC00 100%);
-  color: white;
-  width: 90%;
   display: flex;
-  margin: auto;
   align-items: center;
   justify-content: space-around;
+  background: linear-gradient(45deg, #383838 0%, #383838 50%, #32CD32 50%, #7CFC00 100%);
+  color: white;
+  width: 80%;
+  margin: auto;
   margin-top: 80px;
   margin-bottom: 80px;
   border-radius: 6px;

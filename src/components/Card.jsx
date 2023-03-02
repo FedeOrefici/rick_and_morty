@@ -90,7 +90,10 @@ const Card = ({name, image, species, gender, id, onClose}) =>  {
       });
    }, [myfavorites]);
 
-   
+   const onCloseCard = () => {
+      onClose(id);
+      dispatch(deleteCard(id))
+   }
 
    return (
       
@@ -107,7 +110,7 @@ const Card = ({name, image, species, gender, id, onClose}) =>  {
 
                   <img className="img" src={image} alt="img" />
   
-               <StyledLink to={`/detail/${id}`} >
+               <StyledLink to={`/detail/${id}`}>
                   <h1 className="name" style={{textDecoration: 'none'}}>{name}</h1>  
                </StyledLink>
                   <DivSpeciesGender>
@@ -119,7 +122,7 @@ const Card = ({name, image, species, gender, id, onClose}) =>  {
                            {characters[gender].label}
                      </span>
                   </DivSpeciesGender>
-                     <Button onClick={onClose}>Close</Button>
+                     <Button onClick={onCloseCard}>Close</Button>
          </ContainerCard>
  
    )};

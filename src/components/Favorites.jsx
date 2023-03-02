@@ -1,7 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { orderCards, filterCards } from '../redux/actions';
+import { Fragment } from 'react';
 
 const ContainerMainCards = styled.div`
    display: flex;
@@ -43,10 +44,21 @@ const DivSpeciesGender = styled.div`
 `;
 
 
+const ContainerSelects = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+`;
+
+
+
 
 const Favorites = () => {
 
     const { myFavorites } = useSelector(state => state);
+
+    const dispatch = useDispatch();
 
     const characters = {
         Female: {
@@ -60,30 +72,57 @@ const Favorites = () => {
         }
      };
 
+     const handleOrderCards = (event) => {
+        dispatch(orderCards(event.target.value));
+     }
+
+     const handleFilterCards = (event) => {
+        dispatch(filterCards(event.target.value));
+     }
+
   return (
-    <div>
-        <ContainerMainCards>
-            {
-                myFavorites.map((character) => {
-                    return (
-                    <ContainerCard>
-                        <img className="img" src={character.image} alt="img" />
-                            <h1 className="name" style={{textDecoration: 'none'}}>{character.name}</h1>  
-                            <DivSpeciesGender>
-                                <p className="species">{character.species}</p>
-                                <span className="material-symbols-outlined">account_circle</span>
-                                <p className="gender">{character.gender}</p> 
-                                    <span className="material-symbols-outlined" 
-                                            style={{color: characters[character.gender].color}}>
-                                            {characters[character.gender].label}
-                                    </span>
-                            </DivSpeciesGender>
-            </ContainerCard>
-                    )
-                })
-            }
-        </ContainerMainCards>
-    </div>
+    <Fragment>
+
+        <ContainerSelects>
+            <select name='order' onChange={handleOrderCards}>
+                <option disabled='disables'>Order</option>
+                <option value='Ascendente'>Upward</option>
+                <option value='Descendente'>Downward</option>
+            </select>
+
+            <select name='filter' onChange={handleFilterCards}>
+                <option disabled='disabled'>Filter</option>
+                <option value='Male' >Male</option>
+                <option value='Female' >Female</option>
+                <option value='Genderless' >Genderless</option>
+                <option value='unknown' >Unknown</option>
+            </select>
+        </ContainerSelects>
+
+            <ContainerMainCards>
+                {
+                    myFavorites.map((character) => {
+                        return (
+                        <ContainerCard>
+                            <img className="img" src={character.image} alt="img" />
+                                <h1 className="name" style={{textDecoration: 'none'}}>{character.name}</h1>  
+
+                                <DivSpeciesGender>
+                                    <p className="species">{character.species}</p>
+                                    <span className="material-symbols-outlined">account_circle</span>
+                                    <p className="gender">{character.gender}</p> 
+                                        <span className="material-symbols-outlined" 
+                                                style={{color: characters[character.gender].color}}>
+                                                {characters[character.gender].label}
+                                        </span>
+
+                                </DivSpeciesGender>
+                        </ContainerCard>
+                        )
+                    })
+                }
+            </ContainerMainCards>
+    </Fragment>
   )
 }
 
