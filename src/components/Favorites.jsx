@@ -115,7 +115,6 @@ const Favorites = () => {
                                                 style={{color: characters[character.gender].color}}>
                                                 {characters[character.gender].label}
                                         </span>
-
                                 </DivSpeciesGender>
                         </ContainerCard>
                         )
