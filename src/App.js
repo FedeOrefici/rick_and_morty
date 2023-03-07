@@ -1,13 +1,13 @@
 import { Fragment, useState, useEffect } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCharacters } from './front/redux/actions';
 import Nav from './front/components/Nav';
 import Cards from './front/components/Cards';
 import Detail from './front/components/Detail';
 import About from './front/components/About';
 import Form from './front/components/Form';
 import Favorites from './front/components/Favorites';
-import { useDispatch, useSelector } from 'react-redux';
-import { getCharacters } from './front/redux/actions';
 import './App.css';
 
 function App () {
@@ -38,8 +38,11 @@ function App () {
   }, [access]) //queda escuchando los estados de access.
 
 
+  // const urlBase = 'https://be-a-rym.up.railway.app/api';
+  // const apiKey = '4b803e9cdb99.1973b6ccab8f5eebb33e';
+
   const onSearch = (character) => {
-    fetch(`https://rickandmortyapi.com/api/character/${character}`)
+    fetch(`http://localhost:3001/rickandmorty/character/${character}`)
       .then((response) => response.json())
       .then((data) => {
          if (data.name) {
