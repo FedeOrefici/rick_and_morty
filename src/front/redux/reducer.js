@@ -1,4 +1,4 @@
-import { ADD_CARD, DELETE_CARD, FILTER, ORDER } from "./types"
+import { ADD_CARD, DELETE_CARD, FILTER, ORDER, GET_CHARACTERS } from "./types"
 
 
 const initialState = {
@@ -9,11 +9,16 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
     switch(action.type){
+        
+        case GET_CHARACTERS:
+            return {
+                ...state,
+                allCharacters: [...state.allCharacters, action.payload]
+            }
         case ADD_CARD:
             return {
                 ...state,
                 myFavorites: [...state.myFavorites, action.payload],
-                allCharacters: [...state.myFavorites],
             }
         case DELETE_CARD:
                 let filter = state.myFavorites.filter((card) => card.id !== action.payload)

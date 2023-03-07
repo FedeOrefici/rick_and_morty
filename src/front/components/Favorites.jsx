@@ -52,8 +52,6 @@ const ContainerSelects = styled.div`
 `;
 
 
-
-
 const Favorites = () => {
 
     const { myFavorites } = useSelector(state => state);
@@ -75,17 +73,16 @@ const Favorites = () => {
      const handleOrderCards = (event) => {
         dispatch(orderCards(event.target.value));
      }
-
      const handleFilterCards = (event) => {
         dispatch(filterCards(event.target.value));
      }
-
+     
   return (
     <Fragment>
 
         <ContainerSelects>
             <select name='order' onChange={handleOrderCards}>
-                <option disabled='disables'>Order</option>
+                <option disabled='disabled'>Order</option>
                 <option value='Ascendente'>Upward</option>
                 <option value='Descendente'>Downward</option>
             </select>

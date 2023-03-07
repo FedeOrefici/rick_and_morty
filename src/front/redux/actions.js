@@ -1,4 +1,4 @@
-import { ADD_CARD, DELETE_CARD, FILTER, ORDER } from "./types"
+import { ADD_CARD, DELETE_CARD, FILTER, GET_CHARACTERS, ORDER } from "./types"
 
 export const addCard = (character) => {
     return {
@@ -27,3 +27,11 @@ export const orderCards = (id) => {
         payload: id,
     }
 }
+
+export const getCharacters = (payload) => {
+    return {
+        type: GET_CHARACTERS,
+        payload
+    }
+}
+

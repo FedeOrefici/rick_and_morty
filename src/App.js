@@ -1,14 +1,18 @@
 import { Fragment, useState, useEffect } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import Nav from './front/components/Nav';
+import Cards from './front/components/Cards';
+import Detail from './front/components/Detail';
+import About from './front/components/About';
+import Form from './front/components/Form';
+import Favorites from './front/components/Favorites';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCharacters } from './front/redux/actions';
 import './App.css';
-import Nav from './components/Nav';
-import Cards from './components/Cards';
-import Detail from './components/Detail';
-import About from './components/About';
-import Form from './components/Form';
-import Favorites from './components/Favorites';
 
 function App () {
+  const dispatch = useDispatch();
+  const allCharacters = useSelector(state => state.allCharacters);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -40,18 +44,16 @@ function App () {
       .then((data) => {
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
+            dispatch(getCharacters(data));
          } else {
             window.alert('No hay personajes con ese ID');
          }
       })
-      
   };
 
   const onClose = (id) => {
       setCharacters(characters.filter((char) => char.id !== id));
   };
-
-  
 
   return (
     <Fragment>
@@ -63,7 +65,6 @@ function App () {
                 <Route path='/favorites' element={<Favorites />} />
               </Routes>
     </Fragment>
-
     );
   };
 
