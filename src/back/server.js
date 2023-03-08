@@ -6,8 +6,8 @@ http.createServer((req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     if(req.url.includes('rickandmorty/character')){
         let id = req.url.split('/').at(-1);
-        let characterFind = characters.find((char) => char.id === Number(id));
-        res.writeHead(200, {"Content-type" : "application/json"}).end(JSON.stringify(characterFind));
+        let filterCharacter = characters.filter((char) => char.id === Number(id));
+        res.writeHead(200, {"Content-type" : "application/json"}).end(JSON.stringify(filterCharacter));
     }
 }).listen(port, 'localhost');
 
