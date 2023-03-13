@@ -124,7 +124,6 @@ const Card = ({name, image, species, gender, id, onClose}) =>  {
                   </DivSpeciesGender>
                      <Button onClick={onCloseCard}>Close</Button>
          </ContainerCard>
- 
    )};
 
 

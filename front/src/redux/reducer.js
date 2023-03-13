@@ -1,4 +1,4 @@
-import { ADD_CARD, DELETE_CARD, FILTER, ORDER, GET_CHARACTERS } from "./types"
+import { ADD_CARD, DELETE_CARD, FILTER, ORDER, GET_CHARACTERS, GET_FAVORITES } from "./types"
 
 
 const initialState = {
@@ -18,13 +18,19 @@ export const reducer = (state = initialState, action) => {
         case ADD_CARD:
             return {
                 ...state,
-                myFavorites: [...state.myFavorites, action.payload],
+                myFavorites: action.payload,
+                allCharacters: action.payload,
             }
-        case DELETE_CARD:
-                let filter = state.myFavorites.filter((card) => card.id !== action.payload)
+        case GET_FAVORITES:
             return {
                 ...state,
-                myFavorites: filter,
+                myFavorites: action.payload,
+            }
+        case DELETE_CARD:
+                // let filter = state.myFavorites.filter((card) => card.id !== action.payload)
+            return {
+                ...state,
+                myFavorites: action.payload,
             }
         case FILTER:
             const filtered = state.allCharacters.filter((card) => card.gender === action.payload)
@@ -40,7 +46,6 @@ export const reducer = (state = initialState, action) => {
                     ? state.allCharacters.sort((a, b) => a.id - b.id)
                     : state.allCharacters.sort((a, b) => b.id - a.id)
         }
-        
          default:
             return {...state};
     }

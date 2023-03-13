@@ -68,7 +68,7 @@ const Detail = () => {
           <ContainerData>Status: {character?.status}</ContainerData>
           <ContainerData>Species: {character?.species}</ContainerData>
           <ContainerData>Gender: {character?.gender}</ContainerData>
-          <ContainerData>Origin: {character?.origin?.name}</ContainerData>
+          <ContainerData>Origin: {character?.origin}</ContainerData>
       </ContainerData>
         <img src={character?.image} alt={character?.name} className='img-data' />
 

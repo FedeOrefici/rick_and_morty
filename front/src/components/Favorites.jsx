@@ -1,6 +1,6 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
 import { orderCards, filterCards } from '../redux/actions';
 import { Fragment } from 'react';
 
@@ -58,18 +58,6 @@ const Favorites = () => {
 
     const dispatch = useDispatch();
 
-    const characters = {
-        Female: {
-           label: 'female',
-           color: 'pink'
-        },
-  
-        Male: {
-           label: 'male',
-           color: 'skyblue'
-        }
-     };
-
      const handleOrderCards = (event) => {
         dispatch(orderCards(event.target.value));
      }
@@ -108,10 +96,6 @@ const Favorites = () => {
                                     <p className="species">{character.species}</p>
                                     <span className="material-symbols-outlined">account_circle</span>
                                     <p className="gender">{character.gender}</p> 
-                                        <span className="material-symbols-outlined" 
-                                                style={{color: characters[character.gender].color}}>
-                                                {characters[character.gender].label}
-                                        </span>
                                 </DivSpeciesGender>
                         </ContainerCard>
                         )
